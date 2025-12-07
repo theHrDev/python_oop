@@ -20,8 +20,7 @@ class BankAccount:
     def get_balance(self):
         return f"Current balance: {self.balance}"
 
-            
-            
+                      
             
 def run_bank_app():
     owner = input("Enter account owner's name: ")
