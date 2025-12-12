@@ -1,13 +1,13 @@
 class Student:
-    def __init__(self,name,age,average_grade, grades=[]):
+    def __init__(self,name,age ,grades=[]):
         self.name = name
         self.age = age
         self.grades = grades
-        self.average_grade = average_grade
+        # self.average_grade = average_grade
         
         
     def get_average(self):
-        
+        total_grade = 0
         for grade in self.grades:
             total_grade += grade
             lenght = len(grade)
@@ -27,5 +27,10 @@ class Student:
             return "You are promoted"
         
         
-        
     
+name = input("Enter Your name: ")    
+age = int(input("Enter Your age: "))
+grades = [90,34,56,75]    
+    
+studen = Student(name=name,grades=grades, age=age)
+studen.get_average()
