@@ -1,36 +1,41 @@
 class Student:
-    def __init__(self,name,age ,grades=[]):
+    # average_grade = 0
+    def __init__(self,name,age,grades):
         self.name = name
         self.age = age
         self.grades = grades
-        # self.average_grade = average_grade
+        # self.average_grade 
         
         
     def get_average(self):
-        total_grade = 0
-        for grade in self.grades:
-            total_grade += grade
-            lenght = len(grade)
-            
-            
-        average_grade =total_grade / lenght
-        self.average_grade = average_grade
+        if not self.grades:
+            return 0
+        return sum(self.grades) / len(self.grades)
         
-        return f"Your average score is {average_grade}"
-    
-    
-    def is_promoted(self):
-        if self.average_grade < 50:
-            return "Your average score is below 50, you are to repeat this class"
-        
-        else:
-            return "You are promoted"
-        
+    def is_promoted(self,pass_mark = 50):
+        return self.get_average() >= pass_mark
         
     
-name = input("Enter Your name: ")    
-age = int(input("Enter Your age: "))
-grades = [90,34,56,75]    
-    
-studen = Student(name=name,grades=grades, age=age)
-studen.get_average()
+def student_calc():
+        
+    name = input("Enter Your name: ")    
+    age = int(input("Enter Your age: "))
+    raw = input("Enter grades (comma-separated): ")
+    grades = [int(g.strip()) for g in raw.split(",")]
+
+    student = Student(name, age, grades)
+
+    # grades = [90,34,56,75]    
+        
+    student = Student(name=name,grades=grades, age=age)
+    average = student.get_average()
+    print(f"Average score: {average}")
+
+    if student.is_promoted():
+        print("You are promoted")
+    else:
+        print("You must repeat the class")
+        
+student_calc()
+
+
