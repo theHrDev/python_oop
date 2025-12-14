@@ -1,11 +1,9 @@
 class Library:
-    def __init__(self,book,author,books):
-        self.book = book
-        self.author = author
-        self.books = books
+    def __init__(self):
+        self.books = {}
         
-    def add_books(self):
-        self.books[self.author] = self.book
+    def add_books(self,author,book):
+        self.books[author] = book
         return "Successfully added"
     
     def list_books(self):
@@ -13,26 +11,27 @@ class Library:
         
         
 def librarian_action():
+    print("\n--- Library Menu ---")
+    print("1. Add Books")
+    print("2. List Books")
     
-    book = input("Enter the name of the book: ")
-    author = input("Enter the book author: ")
+    choice = input("Choose an option (1-2): ")
+   
     
-    librarian = Library(book=book,author=author,books={})
+    librarian = Library()
     
-    while True:
-        print("\n--- Library Menu ---")
-        print("1. Add Books")
-        print("2. List Books")
-        # print("3. Check Balance")
-        print("3. Exit")
-
-        choice = input("Choose an option (1-4): ")
+    if choice == "1":
+        book = input("Enter the name of the book: ")
+        author = input("Enter the book author: ")
+        print(librarian.add_books(book=book,author=author))
+    if choice == "2":
+        print(librarian.list_books())
         
-        if choice == "1":
-            print(librarian.add_books())
-        if choice == "2":
-            print(librarian.list_books())
-        if choice == "3":
-            break
+    repeat = input("Do you want to another thing\n1.yes\n2.no: ")
+    if repeat == "1":
+        librarian_action()
+    else:
+        exit()
+    
 
 librarian_action()
