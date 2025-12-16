@@ -3,11 +3,21 @@ class Library:
         self.books = {}
         
     def add_books(self,author,book):
-        self.books[author] = book
-        return "Successfully added"
+        if author not in self.books:
+            self.books[author] = []
+        self.books[author].append(book)
+        return "Book added successfully"
     
     def list_books(self):
-        return self.books
+        if not self.books:
+            return "No books found in the library"
+        
+        result = []
+
+        for author,books in self.books.items():
+            for book in books:
+                result.append(f"{book} by {author}")
+        return "\n".join(result)
         
         
 def librarian_action():
@@ -18,17 +28,19 @@ def librarian_action():
         print("\n--- Library Menu ---")
         print("1. Add Books")
         print("2. List Books")
-        choice = input("Choose an option (1-2): ")
+        print("3. Exit Libraey")
+        choice = input("Choose an option (1-3): ")
     
         if choice == "1":
             book = input("Enter the name of the book: ")
             author = input("Enter the book author: ")
             print(librarian.add_books(book=book,author=author))
-        if choice == "2":
+        elif choice == "2":
             print(librarian.list_books())
-            
-        break
-            
+        elif choice == "3":
+            break
+        else:
+            print("Invalid option. Try again.")
   
     
 
