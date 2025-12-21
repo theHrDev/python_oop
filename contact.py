@@ -4,6 +4,7 @@
 # 3. Delete contact
 # 4. View all contacts
 # 5. Exit
+# Edit
 
 import random;
 class ContactBook:
@@ -18,6 +19,14 @@ class ContactBook:
             self.contact_book[id] = new_contact
             return f"{name} added successfully to the contact book"
         return "There is a contact with the existing name"
+    
+    def remove_contact(self,id):
+        if id not in self.contact_book:
+            return "Invalid ID"
+        del_num = self.contact_book[id]
+        print(del_num)
+        del self.contact_book[id]
+        return f"Contact deleted successfully"
     
     
     def view_all_contact(self):
@@ -42,9 +51,12 @@ def contact_book():
         
         choice = input("\nEnter the menu: ")
         if choice == "1":
-            name = input("Enter the name:")
-            number = input(f"Enter the number of {name}:")
+            name = input("Enter the name: ")
+            number = input(f"Enter the number of {name}: ")
             print(contact.add_contact(name=name,contact=number))
+        elif choice == "2":
+            id = int(input("Enter the id for the contact to be deleted: "))
+            print(contact.remove_contact(id))
         elif choice == "4":
             print(contact.view_all_contact())
         elif choice == "5":
