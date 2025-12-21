@@ -53,6 +53,8 @@ def contact_book():
         if choice == "1":
             name = input("Enter the name: ")
             number = input(f"Enter the number of {name}: ")
+            if name or number == "":
+                print("Enter a valid value")
             print(contact.add_contact(name=name,contact=number))
         elif choice == "2":
             id = int(input("Enter the id for the contact to be deleted: "))
