@@ -4,16 +4,21 @@
 # 3. Delete contact
 # 4. View all contacts
 # 5. Exit
-class Contact:
+
+import random;
+class ContactBook:
     def __init__(self):
         self.contact_book =  {}       
         
     def add_contact(self,name,contact):
         
         if name not in self.contact_book:
-            self.contact_book[name] = contact
+            id = random.randint(10**2,10**3+1)
+            new_contact = {name,contact,id}
+            self.contact_book[id] = new_contact
             return f"{name} added successfully to the contact book"
         return "There is a contact with the existing name"
+    
     
     def view_all_contact(self):
         if not self.contact_book:
@@ -26,7 +31,7 @@ class Contact:
 
 
 def contact_book():
-    contact = Contact()
+    contact = ContactBook()
     while(True):
         print("Pick a menu to get started")
         print("----- 1. Add contact ----")
