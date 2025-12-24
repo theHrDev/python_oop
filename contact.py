@@ -40,6 +40,9 @@ class ContactBook:
         
         return self.contact_book
     
+    def edit(self,id):
+        if id not in self.contact_book():
+            return "contact with the given id does not exist"
     
     
 
