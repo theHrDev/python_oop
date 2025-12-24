@@ -28,6 +28,11 @@ class ContactBook:
         del self.contact_book[id]
         return f"Contact deleted successfully"
     
+    def view_single_contact(self,id):
+        if id not in self.contact_book:
+            return "No contact with the provided id"
+        contact_detail = self.contact_book[id]
+        return f"The details are {contact_detail}"
     
     def view_all_contact(self):
         if not self.contact_book:
