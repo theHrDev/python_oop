@@ -44,6 +44,11 @@ class ContactBook:
         if id not in self.contact_book():
             return "contact with the given id does not exist"
         
+        selected_contact = self.contact_book[id]
+        if not selected_contact[title]:
+            return "No key with the name given"
+        selected_contact[title] = value
+        return "Successflly edited"
     
     
 
