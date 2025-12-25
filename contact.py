@@ -40,9 +40,10 @@ class ContactBook:
         
         return self.contact_book
     
-    def edit(self,id):
+    def edit(self,id,title,value):
         if id not in self.contact_book():
             return "contact with the given id does not exist"
+        
     
     
 
@@ -67,6 +68,9 @@ def contact_book():
         elif choice == "2":
             id = int(input("Enter the id for the contact to be deleted: "))
             print(contact.remove_contact(id))
+        elif choice == "3":
+            id = int(input("Enter the id for the contact to be view: "))
+            print(contact.view_single_contact(id=id))
         elif choice == "4":
             print(contact.view_all_contact())
         elif choice == "5":
